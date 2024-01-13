@@ -1,5 +1,9 @@
 const { data } = require("../DB/currency.json");
 
+const getTitle = (req, res) => {
+  return res.send("<h1>Currency Database</h1>");
+};
+
 const getCurrencies = (req, res) => {
   const { min_value } = req.query;
 
@@ -25,4 +29,4 @@ const getCurrencyBySymbol = (req, res) => {
   }
 };
 
-module.exports = { getCurrencies, getCurrencyBySymbol };
+module.exports = { getTitle, getCurrencies, getCurrencyBySymbol };
