@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const currencyRoutes = require("./routes/currrency.routes");
 const userRoutes = require("./routes/users.routes");

@@ -4,7 +4,23 @@ const getTitle = (req, res) => {
   return res.send("<h1>Currency Database</h1>");
 };
 
+const verifyAuth = (req) => {
+  const { authorization } = req.headers;
+  if (!authorization) {
+    return false;
+  }
+  console.log("process.env.ROUTE_PASSWORD", process.env.ROUTE_PASSWORD);
+  if (authorization !== process.env.ROUTE_PASSWORD) {
+    return false;
+  }
+  return true;
+};
+
 const getCurrencies = (req, res) => {
+  if (!verifyAuth(req)) {
+    return res.status(403).json({ message: "Unauthorized request" });
+  }
+
   const { min_value } = req.query;
 
   if (min_value) {
