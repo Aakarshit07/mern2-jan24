@@ -25,3 +25,6 @@ app.get("*", (req, res) => {
 app.listen(PORT, () => {
   console.log("Listening...");
 });
+
+// Backend boot up -> DB connection established
+// API Call -> global middleware -> specific middleware(if there is any) -> controller -> back to client

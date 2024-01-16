@@ -49,7 +49,7 @@ const searchUsersByQuery = (req, res) => {
   //       });
   //   }
   // }
-
+  // Use blogModel to read/write/update/delete collection
   if (gender && age) {
     const results = data.filter(
       (item) => item.gender === gender && Number(item.dob.age) >= Number(age)
