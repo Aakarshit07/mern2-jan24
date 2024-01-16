@@ -1,11 +1,18 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const currencyRoutes = require("./routes/currrency.routes");
 const userRoutes = require("./routes/users.routes");
+const mongoose = require("mongoose");
 const { verifyAuth } = require("./middlewares/verifyAuth");
 
 const app = express();
 const PORT = 7000;
+const DB_URI = "mongodb://localhost:27017/test";
+
+mongoose
+  .connect(DB_URI)
+  .then(() => console.log("DB Connected"))
+  .catch((err) => console.log(err));
 
 app.use(verifyAuth);
 app.use("/users", userRoutes);

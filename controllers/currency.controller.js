@@ -9,6 +9,8 @@ const getCurrencies = (req, res) => {
   const { min_value } = req.query;
 
   if (min_value) {
+    // We would have been querying Database to fetch currencies
+    // DB could have stored data in any format but while returning in most case DB return data as JSON.
     const result = data.filter(
       (item) => Number(item.min_size) === Number(min_value)
     );
