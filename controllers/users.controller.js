@@ -21,10 +21,7 @@ const getUserById = (req, res) => {
 const searchUsersByQuery = (req, res) => {
   const { gender, age } = req.query;
 
-  const error = getQueryErrors({ age, gender });
-  if (error) {
-    return res.status(422).json(error);
-  }
+  console.log("crioBatchName 2", req.crioBatchName);
 
   // if (!age && !gender) {
   //   return res.status(422).json({ message: "Missing search params" });

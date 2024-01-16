@@ -7,8 +7,8 @@ const { verifyAuth } = require("./middlewares/verifyAuth");
 const app = express();
 const PORT = 7000;
 
-app.use("/users", userRoutes);
 app.use(verifyAuth);
+app.use("/users", userRoutes);
 app.use("/currencies", currencyRoutes);
 
 app.get("*", (req, res) => {
