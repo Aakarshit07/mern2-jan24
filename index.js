@@ -26,5 +26,6 @@ app.listen(PORT, () => {
   console.log("Listening...");
 });
 
+// Flow Of backend
 // Backend boot up -> DB connection established
 // API Call -> global middleware -> specific middleware(if there is any) -> controller -> back to client
