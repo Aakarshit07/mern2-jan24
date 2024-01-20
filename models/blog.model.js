@@ -1,14 +1,17 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const blogSchema = new mongoose.Schema({
-    title: String,
-    authors: [String],
-    content: String,
-    publishedAt: Date,
-})
+const blogSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, unique: true },
+    authors: { type: [String] },
+    content: { type: String, default: "Default Content" },
+    publishedAt: { type: Date, default: null },
+  },
+  { timestamps: true }
+);
 
 // We will be creating a model(serve as link between collection and schema)
-const blogModel = mongoose.model("Blogs", blogSchema, "websiteBlogs1"); //blogs
+const blogModel = mongoose.model("Blogs", blogSchema, "website"); //blogs
 
 module.exports = blogModel;
 // Established MongoDB Connection -> Done
