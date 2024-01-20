@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const currencyRoutes = require("./routes/currrency.routes");
 const userRoutes = require("./routes/users.routes");
+const blogRoutes = require("./routes/blogs.routes");
 const mongoose = require("mongoose");
 const { verifyAuth } = require("./middlewares/verifyAuth");
 
@@ -14,9 +15,11 @@ mongoose
   .then(() => console.log("DB Connected"))
   .catch((err) => console.log(err));
 
+app.use(express.json())
 app.use(verifyAuth);
 app.use("/users", userRoutes);
 app.use("/currencies", currencyRoutes);
+app.use("/blogs", blogRoutes);
 
 app.get("*", (req, res) => {
   return res.send("LOL");
